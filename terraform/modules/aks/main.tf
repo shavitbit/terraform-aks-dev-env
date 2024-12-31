@@ -20,7 +20,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
  # enable CSI driver to access key vault
   key_vault_secrets_provider {
-    # update the secrets on a regular basis
     secret_rotation_enabled = true
   }
 
@@ -96,10 +95,6 @@ resource "helm_release" "nginx_ingress" {
     value = azurerm_public_ip.static_ip.ip_address
   }
 
-#  set {
-#    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/azure-dns-label-name"
-#    value = "orenb-nginxx-2bcloud"
-#  }
+
 }
-# <dns-label-name>.<region>.cloudapp.azure.com orenb-nginxx-2bcloud.westeurope.cloudapp.azure.com
 
