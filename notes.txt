@@ -1,3 +1,0 @@
-jenkins admin username: oren2Bcloud
-jenkins admin password: oren2Bcloud
-email: shavitbit@gmail.com

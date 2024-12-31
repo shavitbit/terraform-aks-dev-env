@@ -13,12 +13,12 @@ variable "name" {
   type        = string
 }
 
-variable "acr_id" {
-  description = "The ID of the Azure Container Registry to integrate with AKS."
+variable "aks_principal_id" {
+  description = "The principal ID of the AKS cluster"
   type        = string
 }
 
-variable "keyvault_id" {
-  description = "The ID of the Key Vault to integrate with AKS."
-  type        = string
-}
+#variable "kubelet_identity_object_id" {
+#  description = "The object ID of the AKS kubelet managed identity"
+#  type        = string
+#}

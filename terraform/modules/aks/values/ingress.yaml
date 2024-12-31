@@ -1,0 +1,8 @@
+---
+controllers:
+  ingressClassResource:
+    name: external-nginx
+  service:
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-health-prob-request-path: /healthz
+#    loadBalancerIP: "52.174.89.151"

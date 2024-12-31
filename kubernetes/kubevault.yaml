@@ -1,0 +1,35 @@
+#apiVersion: secrets-store.csi.x-k8s.io/v1
+#kind: SecretProviderClass
+#metadata:
+#  name: azure-kvname
+#  namespace: default
+#spec:
+#  provider: azure
+#  parameters:
+#    usePodIdentity: "false"
+#    keyvaultName: "oren-kv"
+#    objects: |
+#      array:
+#        - |
+#          objectName: secret1
+#          objectType: secret
+#    tenantID: "bd4f0481-b137-40f1-9e64-20cfd55fbf49"
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: azure-kvname
+  namespace: default
+spec:
+  provider: azure
+  parameters:
+    usePodIdentity: "false"
+#    useVMManagedIdentity: "true"  # Enable managed identity
+#    userAssignedIdentityID: "bd4f0481-b137-40f1-9e64-20cfd55fbf49" # Replace with the managed identity's client ID or object ID
+    # ca643a26-3531-4000-9796-e0b963be076b
+    keyvaultName: "oren-kv"
+    objects: |
+      array:
+        - |
+          objectName: secret1
+          objectType: secret
+    tenantID: "bd4f0481-b137-40f1-9e64-20cfd55fbf49"

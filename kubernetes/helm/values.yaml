@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: orenacr.azurecr.io/hello
+  tag: 0.0.1
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 5000
+
+ingress:
+  enabled: true
+ # host: "*" #orenb-nginxx-2bcloud.westeurope.cloudapp.azure.com #98.64.138.92
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  path: /
+  pathType: Prefix

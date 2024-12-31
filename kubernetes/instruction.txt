@@ -1,0 +1,12 @@
+# Get the Managed Identity Client ID of the AKS cluster
+az aks show --name oren-aks --resource-group oren-CANDIDATE_RG --query "identity.principalId" -o tsv
+
+a58cf9fe-0b89-444a-9c7c-ac0950256e16
+
+# Set the access policy on the Key Vault
+az keyvault set-policy --name oren-kv --object-id a58cf9fe-0b89-444a-9c7c-ac0950256e16 --secret-permissions get list
+
+
+
+my user id = de162e27-96d2-47f7-adb9-104932f7efc4
+subscribtuib id = 2fa0e512-f70e-430f-9186-1b06543a848e
