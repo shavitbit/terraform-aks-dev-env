@@ -13,14 +13,14 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "candidate_rg" {
-  name     = "${var.name}-CANDIDATE_RG"
+resource "azurerm_resource_group" "rg" {
+  name     = "${var.name}-rg"
   location = var.location
 }
 
 module "vm" {
   source              = "./modules/vm"
-  resource_group      = azurerm_resource_group.candidate_rg.name
+  resource_group      = azurerm_resource_group.rg.name
   location            = var.location
   name                = var.name
   ssh_public_key_path = var.ssh_public_key_path
@@ -29,7 +29,7 @@ module "vm" {
 
 module "acr" {
   source              = "./modules/acr"
-  resource_group      = azurerm_resource_group.candidate_rg.name
+  resource_group      = azurerm_resource_group.rg.name
   location            = var.location
   name                = var.name
 }
@@ -37,7 +37,7 @@ module "acr" {
 module "key_vault" {
   source              = "./modules/key_vault"
   name                = var.name
-  resource_group      = azurerm_resource_group.candidate_rg.name
+  resource_group      = azurerm_resource_group.rg.name
   location            = var.location
   aks_principal_id    = module.aks.aks_principal_id
   #kubelet_identity_object_id = module.aks.kubelet_identity_object_id
@@ -46,7 +46,7 @@ module "key_vault" {
 module "aks" {
   source              = "./modules/aks"
   name                = var.name
-  resource_group      = azurerm_resource_group.candidate_rg.name
+  resource_group      = azurerm_resource_group.rg.name
   location            = var.location
   acr_id              = module.acr.acr_id 
   keyvault_id         = module.key_vault.keyvault_id

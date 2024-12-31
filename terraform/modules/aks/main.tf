@@ -45,11 +45,11 @@ provider "helm" {
     cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_config[0].cluster_ca_certificate)
   }
 }
-#mc_oren-candidate_rg_oren-aks_westeurope
+#mc_oren-rg_oren-aks_westeurope
 resource "azurerm_public_ip" "static_ip" {
   name                = "${var.name}-ingress-static-ip"
   location            = var.location
-  resource_group_name = "mc_oren-candidate_rg_oren-aks_westeurope"
+  resource_group_name = "mc_oren-rg_oren-aks_westeurope"
   allocation_method   = "Static"
   sku                 = "Standard"
   tags = {
@@ -64,7 +64,7 @@ resource "azurerm_public_ip" "static_ip" {
 #resource "azurerm_role_assignment" "aks_network_contributor" {
 #  principal_id   = "a58cf9fe-0b89-444a-9c7c-ac0950256e16"  # The Identity that AKS is using
 #  role_definition_name = "Network Contributor"
-#  scope          = "/subscriptions/2fa0e512-f70e-430f-9186-1b06543a848e/resourceGroups/oren-CANDIDATE_RG"
+#  scope          = "/subscriptions/2fa0e512-f70e-430f-9186-1b06543a848e/resourceGroups/oren-rg"
 #}
 ## Assign Network Contributor role to System-Assigned Managed Identity
 #resource "azurerm_role_assignment" "aks_system_assigned_network_contributor" {
